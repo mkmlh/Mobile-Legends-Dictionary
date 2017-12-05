@@ -56,7 +56,7 @@ export default class HeroAdd extends Component {
         title != "" &&
         role != "" &&
         speciality != "" &&
-        imageUri != ""
+        image != ""
       ) {
         self.setState({ isValid: true });
       }
@@ -135,7 +135,7 @@ export default class HeroAdd extends Component {
             <Item floatingLabel fifth>
               <Input
                 onChangeText={text => {
-                  this.setState({ imageUri: text });
+                  this.setState({ image: text });
                   this.checkIsValid();
                 }}
               />
