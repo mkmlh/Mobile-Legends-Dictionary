@@ -3,43 +3,45 @@
 
 // AppRegistry.registerComponent('MobileLegends', () => App);
 
-import { Navigation } from 'react-native-navigation';
+import { Navigation } from "react-native-navigation";
+import { registerScreens } from "./screens";
+import { Provider } from "react-redux";
+import store from "./store";
 
-import { registerScreens } from './screens';
-
-registerScreens(); // this is where you register all of your app's screens
+registerScreens(store,Provider); // this is where you register all of your app's screens
+//store and Provider must be in sequence
 
 // start the app
 Navigation.startTabBasedApp({
   tabs: [
     {
-      label: 'Home',
-      screen: 'tab.Home', // this is a registered name for a screen
-      icon: require('./img/one.png'),
+      label: "Home",
+      screen: "tab.Home", // this is a registered name for a screen
+      icon: require("./img/one.png"),
       //selectedIcon: require('../img/one_selected.png'), // iOS only
-      title: 'Home',
-      navigatorStyle:{
-        navBarHidden:true
+      title: "Home",
+      navigatorStyle: {
+        navBarHidden: true
       }
     },
     {
-      label: 'Heroes',
-      screen: 'tab.Hero',
-      icon: require('./img/two.png'),
+      label: "Heroes",
+      screen: "tab.Hero",
+      icon: require("./img/two.png"),
       //selectedIcon: require('../img/two_selected.png'), // iOS only
-      title: 'Heroes',
-      navigatorStyle:{
-        navBarHidden:true
+      title: "Heroes",
+      navigatorStyle: {
+        navBarHidden: true
       }
     },
     {
-      label: 'Settings',
-      screen: 'tab.Settings',
-      icon: require('./img/three.png'),
+      label: "Settings",
+      screen: "tab.Settings",
+      icon: require("./img/three.png"),
       //selectedIcon: require('../img/two_selected.png'), // iOS only
-      title: 'Settings',
-      navigatorStyle:{
-        navBarHidden:true
+      title: "Settings",
+      navigatorStyle: {
+        navBarHidden: true
       }
     }
   ]

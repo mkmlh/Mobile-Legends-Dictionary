@@ -1,7 +1,8 @@
 import React from "react";
 import { Container, Content, Text, Thumbnail, H3, Button } from "native-base";
+import "../components/TryRedux";
 
-export default (Home = (props) => (
+export default Home = (props) => (
   <Container style={styles.containerStyle}>
     <Content>
       <Thumbnail
@@ -21,7 +22,7 @@ export default (Home = (props) => (
       </Button>
     </Content>
   </Container>
-));
+);
 const styles = {  
   containerStyle: {
     justifyContent: "center",
