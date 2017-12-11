@@ -6,3 +6,10 @@ export function fetchHeroes() {
     payload: axios.get("http://rest.learncode.academy/api/kamal/heroes")
   };
 }
+
+export function getHero(id) {
+  return {
+    type: "GET_HERO",
+    payload: axios.get(`http://rest.learncode.academy/api/kamal/heroes/${id}`)
+  };
+}

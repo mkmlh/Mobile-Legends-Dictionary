@@ -26,7 +26,7 @@ export default class Hero extends Component {
     };
   }
   componentWillMount() {
-    this.props.fetchHeroeszz();
+    this.props.fetchHeroeszz()
   }
   renderHeader() {
     return (

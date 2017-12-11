@@ -16,7 +16,8 @@
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-promise-middleware": "^5.0.0",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "tcomb-form-native": "^0.6.11"
   },
   "devDependencies": {
     "babel-jest": "21.2.0",

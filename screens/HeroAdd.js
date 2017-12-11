@@ -34,7 +34,7 @@ class HeroAdd extends Component {
       title: "",
       role: "",
       speciality: "",
-      imageUri: "",
+      image: "",
       isValid: false
     };
   }
