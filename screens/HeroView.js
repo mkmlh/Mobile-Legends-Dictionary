@@ -12,11 +12,16 @@ import {
   Left,
   Right,
   Icon,
-  Separator
+  Separator,
+  Button
 } from "native-base";
 import { TouchableOpacity } from "react-native";
+import {connect} from "react-redux";
+import { fetchHeroes } from "../actions/heroes";
+import axios from "axios";
 
-export default class HeroView extends Component {
+
+class HeroView extends Component {
   static navigatorStyle = {
     navBarHidden: true,
     tabBarHidden: true
@@ -40,6 +45,15 @@ export default class HeroView extends Component {
       </Header>
     );
   }
+  
+  handleDelete(id){
+    axios.delete(`http://rest.learncode.academy/api/kamal/heroes/${id}`)
+    .then(()=>{
+      this.props.dispatch(fetchHeroes())
+      this.props.navigator.pop();
+    })
+  }
+
   render() {
     return (
       <Container>
@@ -66,8 +80,17 @@ export default class HeroView extends Component {
                 <Text>{this.props.hero.speciality}</Text>
             </ListItem>
           </List>
+          <Button full danger onPress={()=>this.handleDelete(this.props.hero.id)}>
+            <Text> Delete </Text>
+          </Button>
         </Content>
       </Container>
     );
   }
 }
+
+mapStateToProps=(state)=>({
+
+})
+
+export default connect(mapStateToProps)(HeroView)

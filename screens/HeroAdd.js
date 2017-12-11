@@ -16,8 +16,10 @@ import {
 } from "native-base";
 import { TouchableOpacity } from "react-native";
 import axios from "axios";
+import { fetchHeroes } from "../actions/heroes";
+import { connect } from "react-redux";
 
-export default class HeroAdd extends Component {
+class HeroAdd extends Component {
   static navigatorStyle = {
     navBarHidden: true,
     tabBarHidden: true
@@ -43,6 +45,7 @@ export default class HeroAdd extends Component {
       url: "http://rest.learncode.academy/api/kamal/heroes",
       data: this.state
     }).then(() => {
+      self.props.dispatch(fetchHeroes());
       self.props.navigator.pop();
     });
   }
@@ -50,7 +53,7 @@ export default class HeroAdd extends Component {
   checkIsValid() {
     const self = this;
     setTimeout(() => {
-      const { name, title, role, speciality, imageUri } = self.state; //this.state.name || karena didalam fungsi lagi maka pakai self
+      const { name, title, role, speciality, image } = self.state; //this.state.name || karena didalam fungsi lagi maka pakai self
       if (
         name != "" &&
         title != "" &&
@@ -59,8 +62,7 @@ export default class HeroAdd extends Component {
         image != ""
       ) {
         self.setState({ isValid: true });
-      }
-      else{
+      } else {
         self.setState({ isValid: false });
       }
     }, 1000);
@@ -114,32 +116,35 @@ export default class HeroAdd extends Component {
                 }}
               />
             </Item>
+
             <Item floatingLabel third>
+              <Label>Role</Label>
               <Input
                 onChangeText={text => {
                   this.setState({ role: text });
                   this.checkIsValid();
                 }}
               />
-              <Label>Role</Label>
             </Item>
+
             <Item floatingLabel fourth>
+              <Label>Speciality</Label>
               <Input
                 onChangeText={text => {
                   this.setState({ speciality: text });
                   this.checkIsValid();
                 }}
               />
-              <Label>Speciality</Label>
             </Item>
+
             <Item floatingLabel fifth>
+              <Label>ImageUri</Label>
               <Input
                 onChangeText={text => {
                   this.setState({ image: text });
                   this.checkIsValid();
                 }}
               />
-              <Label>ImageUri</Label>
             </Item>
           </Form>
         </Content>
@@ -147,3 +152,7 @@ export default class HeroAdd extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({});
+
+export default connect(mapStateToProps)(HeroAdd);

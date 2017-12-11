@@ -3,10 +3,10 @@ import Hero from "../screens/Hero";
 import { fetchHeroes } from "../actions/heroes";
 
 const mapStateToProps = state => ({
-  data: state //from reducers heroes:action.payload or get all state
+  data: state //from reducers heroes:action.payload or get all state --inisiasi dulu
 });
 const mapDispatchToProps = dispatch => ({
-  fetchHeroes: () => {
+  fetchHeroeszz: () => {
     dispatch(fetchHeroes());
   }
 });
